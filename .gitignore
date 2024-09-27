@@ -2,6 +2,7 @@
 build/**
 install/**
 .cache/**
+external/CLI11/**
 
 # Prerequisites
 *.d

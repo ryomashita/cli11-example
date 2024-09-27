@@ -19,6 +19,7 @@ include(${CMAKE_SCRIPTS_DIR}/set_compile_props.cmake)
 include(${CMAKE_SCRIPTS_DIR}/set_warnings_as_errors.cmake)
 include(${CMAKE_SCRIPTS_DIR}/enable_memcheck.cmake)
 include(${CMAKE_SCRIPTS_DIR}/enable_sanitizers.cmake)
+include(${CMAKE_SCRIPTS_DIR}/install_cli11.cmake)
 
 # set default install path (can be overwritten with -DCMAKE_INSTALL_PREFIX=...)
 set(CMAKE_INSTALL_PREFIX
