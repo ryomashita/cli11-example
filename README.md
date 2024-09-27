@@ -1,6 +1,10 @@
-# cpp-cmake-template
+# cli11-example
 
-## About
+The code examples for the [CLI11](https://github.com/CLIUtils/CLI11) library.
+
+## cpp-cmake-template
+
+### About
 
 A template for C++ projects using CMake.
 This repository includes settings for the following tools:
@@ -14,7 +18,7 @@ This repository includes settings for the following tools:
   - [CMake Tools (VSCode Extension)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
   - [C/C++ Include Guard (VSCode Extension)](https://marketplace.visualstudio.com/items?itemName=akiramiyakoda.cppincludeguard)
 
-## Directoris
+### Directoris
 
 The directory structure is based on [The Pitchfork Layout (PFL)](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs).
 (but there are some differences.)
