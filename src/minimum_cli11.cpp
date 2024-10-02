@@ -9,6 +9,8 @@ int main(int argc, char **argv) {
     int p = 0;  // with default value (0)
     app.add_option("-p", p, "Parameter p");
 
+    // The options `-h`, `--help` are implicitly defined.
+
     CLI11_PARSE(app, argc, argv);
     // Expands to
     // try {
