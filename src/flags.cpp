@@ -1,33 +1,38 @@
 #include <CLI/CLI.hpp>
 #include <iostream>
 
+// Reference: https://cliutils.github.io/CLI11/book/chapters/flags.html
+
 int main(int argc, char **argv) {
     using std::cout;
     using std::endl;
     CLI::App app{"Flag example program"};
 
+    // flags = parameters with no arguments
+
     /// [define]
-    // CLI::Option フラグオプションの設定、取得を行うクラス
+    // CLI::Option : flags を扱うクラス
+    // フラグ名は `,` 区切りで指定
     CLI::Option *flag_plain = app.add_flag("--plain,-p", "This is a pure flag");
 
+    // 第二引数に bool を渡した場合、flag の有無が格納される
     bool flag_bool = false;
-    app.add_flag("--bool,-b", flag_bool, "This is a bool flag")
-        ->take_last();  // allow only once. `-b -b ...` becomes invalid.
+    app.add_flag("--bool,-b", flag_bool, "This is a bool flag");
 
-    // will be set to count of times this flag was found.
-    int flag_int = 0;
-    app.add_flag("-i,--int", flag_int, "This is an countable flag");
-
-    // フラグ変数にはbool型以外も使える (int, string, vector, ...)
-    // ただし格納されるのは true/false のみ
-    std::string flag_str = "default str";
-    app.add_flag("-s,--str", flag_str, "This is a string flag");
-
-    // ! をつけるとデフォルト値を false にできる
+    // ! をつけると false 値のフラグを定義できる
     bool flag_bool2 = false;
     app.add_flag("--flag,!--no-flag", flag_bool, "This is a bool flag");
 
-    // bool 以外の場合は、中括弧でデフォルト値を指定できる
+    // フラグ変数にはbool型以外も使える (int, string, vector, ...)
+    // string -> "true" or "false" が格納される
+    std::string flag_str = "default str";
+    app.add_flag("-s,--str", flag_str, "This is a string flag");
+
+    // int -> flag の見つかった回数が格納される
+    int flag_int = 0;
+    app.add_flag("-i,--int", flag_int, "This is an countable flag");
+
+    // 中括弧でデフォルト値を指定できる
     int flag_int2 = 0;
     app.add_flag("-1{1}, -2{2}, -3{3}", flag_int2, "This is an int flag")
         ->take_last();  // デフォルトでは 複数指定 (`-123`)
