@@ -7,3 +7,6 @@ link_cli11(minimum_cli11)
 
 add_executable(flags flags.cpp)
 link_cli11(flags)
+
+add_executable(options options.cpp)
+link_cli11(options)
