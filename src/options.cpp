@@ -1,6 +1,8 @@
 #include <CLI/CLI.hpp>
 #include <iostream>
 
+#include "CLI/CLI.hpp"
+
 int main(int argc, char** argv) {
     CLI::App app{"Minimum CLI11 example"};
     // options = parameters with arguments
@@ -10,14 +12,20 @@ int main(int argc, char** argv) {
     // - 整数型でなくても、整数から変換可能な型なら受け取れる
     int int_option = 0;
     app.add_option("-i,--int", int_option, "This is an int option")
-        ->capture_default_str()  // display default value
-        ->required();            // required option
+        ->capture_default_str()      // display default value
+        ->check(CLI::Range(0, 255))  // check with validator
+        ->required();                // required option
     // 他にも envname (環境変数から取得), needs (他のオプションとの依存関係),
     // などの設定が可能
 
     // string option
     std::string str_option = "default-string";
     app.add_option("-s,--str", str_option, "This is a string option");
+
+    // file option
+    std::string file_option = "default-file";
+    app.add_option("-f,--file", file_option, "This is a file option")
+        ->check(CLI::ExistingFile);  // check if file exists
 
     // tuple option
     std::tuple<int, std::string> tuple_option = {0, "default-string"};
@@ -27,6 +35,7 @@ int main(int argc, char** argv) {
 
     std::cout << "-i,--int = " << int_option << std::endl;
     std::cout << "-s,--str = " << str_option << std::endl;
+    std::cout << "-f,--file = " << file_option << std::endl;
     std::cout << "--tuple = (" << std::get<0>(tuple_option) << ", "
               << std::get<1>(tuple_option) << ")" << std::endl;
 }
