@@ -10,3 +10,6 @@ link_cli11(flags)
 
 add_executable(options options.cpp)
 link_cli11(options)
+
+add_executable(subcommands subcommands.cpp)
+link_cli11(subcommands)
