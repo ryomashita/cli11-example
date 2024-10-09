@@ -13,3 +13,6 @@ link_cli11(options)
 
 add_executable(subcommands subcommands.cpp)
 link_cli11(subcommands)
+
+add_executable(validators validators.cpp)
+link_cli11(validators)
