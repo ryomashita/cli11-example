@@ -4,7 +4,9 @@
 int main(int argc, char **argv) {
     // CLI::App : the basis of all interactions with CLI11
     CLI::App app{"Minimum CLI11 example"};
+
     // show help message when an error occurs
+    // default ではエラーメッセージのみ表示し, ヘルプは表示されない
     app.failure_message(CLI::FailureMessage::help);
 
     // define an option `-p`.
@@ -21,6 +23,18 @@ int main(int argc, char **argv) {
     //     return (app).exit(e);
     // }
 
-    std::cout << "Parameter p: " << p << std::endl;
+    std::cout << "Parameter p: " << p << '\n';
     return 0;
 }
+
+/*
+`./minimum_cli11 -h` と呼び出すとヘルプが表示される:
+```
+Minimum CLI11 example
+Usage: ./build/src/minimum_cli11 [OPTIONS]
+
+Options:
+  -h,--help                   Print this help message and exit
+  -p INT                      Parameter p
+```
+*/
